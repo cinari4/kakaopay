@@ -30,8 +30,25 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
+
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.mockito:mockito-core:2.+'
+}
+
+test {
+    useJUnit {
+        excludeCategories ' com.kakaopay.apisrv.IntegrationTestCategory'
+    }
+}
+
+task allTest(type: Test) {
+    doFirst {
+        useJUnit {
+
+        }
+    }
 }

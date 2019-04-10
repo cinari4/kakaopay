@@ -1,39 +1,41 @@
 package com.kakaopay.apisrv.api;
 
+import com.kakaopay.apisrv.exception.ApiException;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static com.kakaopay.apisrv.stub.ParseDataStub.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ParseDataApiTest {
     @Test
     public void parse_test1_read_exist_file() {
         ParseDataApi parseDataApi = new ParseDataApi();
-        List<List<String>> data = parseDataApi.csv("data2.csv");
+        List<List<String>> data = parseDataApi.csv(NORMAL_CSV_FILE);
         assertNotNull(data);
     }
 
-    @Test
+    @Test(expected = ApiException.class)
     public void parse_test1_read_not_exist_file() {
         ParseDataApi parseDataApi = new ParseDataApi();
-        List<List<String>> data = parseDataApi.csv("data2_not_exist.csv");
-        assertNull(data);
+        parseDataApi.csv(NOT_EXIST_CSV_FILE);
     }
 
     @Test
     public void parse_test2_check_sampledata() {
         ParseDataApi parseDataApi = new ParseDataApi();
-        List<List<String>> data = parseDataApi.csv("data2.csv");
+        List<List<String>> data = parseDataApi.csv(NORMAL_CSV_FILE);
         assertNotNull(data);
 
         // 읽어온 샘플 데이터 사이즈가 111인지
-        assertEquals(111, data.size());
+        assertEquals(NORMAL_CSV_ALL_ROW, data.size());
 
         // 읽어온 샘플 데이터의 각 행의 열 개수가 6인지
         for (List<String> rowData : data) {
-            assertEquals(6, rowData.size());
+            assertEquals(NORMAL_CSV_COLUMN, rowData.size());
         }
 
         // 읽어온 샘플 데이터의 첫 행 비교
