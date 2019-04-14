@@ -66,7 +66,7 @@ public class ParseDataService {
      */
     private Attraction getAttraction(List<String> data) {
         Attraction attraction = new Attraction();
-        attraction.setId(Integer.parseInt(data.get(0)));
+        attraction.setId(Long.parseLong(data.get(0)));
         attraction.setProgramName(data.get(1));
         attraction.setTheme(data.get(2));
         attraction.setLocation(data.get(3));

@@ -8,10 +8,11 @@ import javax.persistence.*;
 @Entity
 public class Attraction {
     @Id
+    @GeneratedValue
     @Column(name = "id")
     @Getter
     @Setter
-    private int id;
+    private Long id;
 
     @Column(name = "programName")
     @Getter

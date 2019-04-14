@@ -22,19 +22,19 @@ public class ParseDataServiceTest extends IntegrationTest {
     private AttractionRepository attractionRepository;
 
     @Test
-    public void loadAttractionCsvData_test1_normal() {
+    public void loadAttractionCsvDataTest_1_normal() {
         assertTrue(parseDataService.loadAttractionCsvData(NORMAL_CSV_FILE));
         assertEquals(NORMAL_CSV_DATA_ROW, attractionRepository.count());
     }
 
     @Test(expected = ApiException.class)
-    public void loadAttractionCsvData_test2_invalid1() {
+    public void loadAttractionCsvDataTest_2_invalid1() {
         parseDataService.loadAttractionCsvData(INVALID_CSV_FILE1);
         assertEquals(0, attractionRepository.count());
     }
 
     @Test(expected = ApiException.class)
-    public void loadAttractionCsvData_test2_invalid2() {
+    public void loadAttractionCsvDataTest_2_invalid2() {
         parseDataService.loadAttractionCsvData(INVALID_CSV_FILE2);
         assertEquals(0, attractionRepository.count());
     }

@@ -35,20 +35,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.mockito:mockito-core:2.+'
-}
+//    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 
-test {
-    useJUnit {
-        excludeCategories ' com.kakaopay.apisrv.IntegrationTestCategory'
-    }
-}
-
-task allTest(type: Test) {
-    doFirst {
-        useJUnit {
-
-        }
-    }
+//    testImplementation 'org.springframework.security:spring-security-test'
 }
